@@ -9,15 +9,14 @@ import (
 	apiVersion: "notification.toolkit.fluxcd.io/v1beta1"
 	kind:       "Alert"
 	metadata: {
-		name:        "slack-\(_config.name)"
-		namespace:   _config.metadata.namespace
-		labels:      _config.metadata.labels
+		name:      "slack-\(_config.name)"
+		namespace: _config.metadata.namespace
+		labels:    _config.metadata.labels
 		if len(_config.annotations) > 0 {
 			annotations: _config.annotations
-		}	
+		}
 	}
 	spec: {
-
 		eventSeverity: "info"
 		providerRef: name: "slack-\(_config.name)"
 		eventSources: [
@@ -37,6 +36,10 @@ import (
 				kind: "Terraform"
 				name: "*"
 			},
+			{
+				kind: "OCIRepository"
+				name: "*"
+			},
 		]
 		if _config.slack.summary != "" {
 			summary: _config.slack.summary
@@ -49,9 +52,9 @@ import (
 	apiVersion: "notification.toolkit.fluxcd.io/v1beta1"
 	kind:       "Provider"
 	metadata: {
-		name:        "slack-\(_config.name)"
-		namespace:   _config.metadata.namespace
-		labels:      _config.labels
+		name:      "slack-\(_config.name)"
+		namespace: _config.metadata.namespace
+		labels:    _config.metadata.labels
 		if len(_config.annotations) > 0 {
 			annotations: _config.annotations
 		}

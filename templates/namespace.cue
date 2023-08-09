@@ -9,10 +9,10 @@ import (
 	apiVersion: "v1"
 	kind:       "Namespace"
 	metadata: {
-		name:        _config.name
-		labels:      _config.metadata.labels
+		name:   _config.name
+		labels: _config.metadata.labels
 		if len(_config.annotations) > 0 {
 			annotations: _config.annotations
-		}	
+		}
 	}
 }

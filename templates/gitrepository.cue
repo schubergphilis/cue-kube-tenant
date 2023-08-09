@@ -9,12 +9,12 @@ import (
 	apiVersion: "source.toolkit.fluxcd.io/v1beta2"
 	kind:       "GitRepository"
 	metadata: {
-		name:        _config.name
-		namespace:   _config.metadata.namespace
-		labels:      _config.metadata.labels
+		name:      _config.name
+		namespace: _config.metadata.namespace
+		labels:    _config.metadata.labels
 		if len(_config.annotations) > 0 {
 			annotations: _config.annotations
-		}	
+		}
 	}
 	spec: {
 		interval: "\(_config.git.interval)m"

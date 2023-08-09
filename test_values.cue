@@ -3,15 +3,15 @@
 package main
 
 values: {
-	name:       "test-tenant"
+	name: "test-tenant"
 	metadata: namespace: "test-ns"
-	gitopAgent: "argocd"
-	role:       "admin"
+	gitopsAgent: "flux"
+	role:        "admin"
 	git: {
 		url:      "ssh://git@testgit.com/test-repo.git"
 		branch:   "main"
 		path:     "./test"
-		interval: 10
+		interval: "10m"
 	}
 	slack: {
 		enabled: true
