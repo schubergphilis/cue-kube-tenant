@@ -24,8 +24,8 @@ _module: {
 	version: "0.0.1"
 }
 
-_common_values: { // set common_values
-    gitopsAgent: "flux"
+_common_values: {// set common_values
+	gitopsAgent: "flux"
 	git: {
 		url:      "ssh://git@testgit.com/test-repo.git"
 		branch:   "main"
@@ -36,23 +36,23 @@ _common_values: { // set common_values
 bundle: {
 	apiVersion: "v1alpha1"
 	name:       "tenants"
-	instances: { // each instances can present a tenant
+	instances: {// each instances can present a tenant
 		frontend: {
-			module: _module
+			module:    _module
 			namespace: "frontend"
-            values: _common_values
+			values:    _common_values
 			values: role: "admin"
 			values: name: "frontend-team"
-            values: git: path: "./frontend"
-		},
+			values: git: path: "./frontend"
+		}
 		backend: {
-			module: _module
+			module:    _module
 			namespace: "backend"
-            values: _common_values // reuse common values
+			values:    _common_values // reuse common values
 			values: {
-			  name: "backend-team"
-			  role: "cluster-admin"
-              git: path: "./backend"
+				name: "backend-team"
+				role: "cluster-admin"
+				git: path: "./backend"
 			}
 		}
 	}
