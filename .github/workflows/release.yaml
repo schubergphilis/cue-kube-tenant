@@ -1,7 +1,7 @@
 name: Release Tenant module
 on:
   push:
-    tag: ['*'] # semver format
+    tags: ['*']
 
 permissions:
   contents: read # needed for checkout
@@ -28,4 +28,9 @@ jobs:
         run: make test
       - name: Push
         id: push
+        env:
+          USER: ${{ github.actor }}
+          PASS: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          TAG: ${{ github.ref_name }}
         run: make push
