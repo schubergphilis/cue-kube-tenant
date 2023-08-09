@@ -17,7 +17,7 @@ Module used to quickly generate K8s Tenants using [CUE](https://cuelang.org/) an
 
 ## Example usage
 
-```json
+```cue
 // tenants.cue
 _module: {
 	url:     "oci://ghcr.io/schubergphilis/cue-modules/tenant"
